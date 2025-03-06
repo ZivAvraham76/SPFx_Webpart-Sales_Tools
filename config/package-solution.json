@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sp-fx-webpart-sales-tools-client-side-solution",
+    "id": "e617a1e3-9ab2-41c1-a1fe-1ffad64b3714",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "SPFx_Webpart-Sales_Tools description"
+      },
+      "longDescription": {
+        "default": "SPFx_Webpart-Sales_Tools description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "sp-fx-webpart-sales-tools Feature",
+        "description": "The feature that activates elements of the sp-fx-webpart-sales-tools solution.",
+        "id": "6ca0b225-08c3-407b-8812-3fd8e1c69447",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "LPManager-Backend-App",
+        "scope": "user_impersonation"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sp-fx-webpart-sales-tools.sppkg"
+  }
+}
