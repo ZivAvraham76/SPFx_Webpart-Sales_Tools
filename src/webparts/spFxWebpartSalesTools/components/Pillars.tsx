@@ -3,7 +3,7 @@ import * as React from 'react';
 interface PillarsProps {
     selectedFilter: string;
     onFilterChange: (filter: string) => void;
-    onLevelReset: () => void; // פונקציה לאיפוס רמות
+    onLevelReset: () => void; 
 }
 
 const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onLevelReset }) => {
@@ -11,7 +11,7 @@ const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onLev
 
     const handleFilterChange = (filter: string) => {
         onFilterChange(filter);
-        onLevelReset(); // כאשר הפילטר משתנה, נאפס את הרמות
+        onLevelReset(); 
     };
 
     return (
@@ -20,7 +20,7 @@ const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onLev
                 {filters.map((filter) => (
                     <button
                         key={filter}
-                        className={`px-3 py-1 text-xs font-medium transition-colors duration-200 
+                        className={`px-3 py-1 text-sm font-medium transition-colors duration-200 
                             ${selectedFilter === filter ? 'bg-[#41273c] text-white' : 'bg-white text-[#41273c] hover:bg-[#896f85] hover:text-white'}`}
                         onClick={() => handleFilterChange(filter)}
                     >
