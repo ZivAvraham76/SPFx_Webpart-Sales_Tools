@@ -12,7 +12,7 @@ import { useState } from 'react';
 
 const SpFxWebpartSalesTools : React.FC<ISpFxWebpartSalesToolsProps> = (props) => {
   const { trainingData } = props;
-  const [selectedFilter, setSelectedFilter] = useState('All');
+  const [selectedFilter, setSelectedFilter] = useState('Tool');
   const [selectedLevel, setSelectedLevel] = useState('All');
 
   const onLevelReset = () => {

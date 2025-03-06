@@ -29,7 +29,7 @@ const CardBody: React.FC<CardBodyProps> = ({ name, accessUrl}) => {
                         className="text-white text-xs font-normal"
                         onClick={() => window.open(accessUrl, `_blank`)}
                     >
-                        Learning Path
+                        Video
                     </button>
                 </div>
 

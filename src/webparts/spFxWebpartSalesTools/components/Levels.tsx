@@ -23,9 +23,6 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
                            selectedFilter === 'ADSM' ? uniqueAdsm : [];
 
     const getButtonLabel = () =>{
-    if (selectedFilter === 'All') {
-            return 'Select';
-        }
     return selectedLevel === 'All' ? `Select ${selectedFilter}` : selectedLevel;
     }
 
