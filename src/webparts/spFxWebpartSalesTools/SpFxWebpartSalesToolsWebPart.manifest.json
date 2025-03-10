@@ -22,7 +22,11 @@
     "description": { "default": "SPFx_Webpart-Sales_Tools description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "SPFx_Webpart-Sales_Tools"
+      "description": "Sales Tools & Processes",
+      "uniqueAdsm": ["Prospect", "Qualify", "Validate", "Prove", "Proposal", "Agreement", "Closed Won", "Closed Lost"],
+      "uniqueRoles": ["Account Manager", "Channel Manager", "Security Engineer", "SDR", "Renewal"],
+      "checkboxAdsm": ["Prospect", "Qualify", "Validate", "Prove", "Proposal", "Agreement", "Closed Won", "Closed Lost"],
+      "checkboxRoles": ["Account Manager", "Channel Manager", "Security Engineer", "SDR", "Renewal"]
     }
   }]
 }

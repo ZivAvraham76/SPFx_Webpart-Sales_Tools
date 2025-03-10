@@ -1,39 +1,58 @@
 import * as React from 'react';
 import type { ISpFxWebpartSalesToolsProps } from './ISpFxWebpartSalesToolsProps';
 import '../../../../assets/dist/tailwind.css';
-import '../../../../assets/dist/tailwind.css'; 
+import '../../../../assets/dist/tailwind.css';
 import Carousel from './Carousel';
 import Pillars from './Pillars';
 import Levels from './Levels';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Popup from './Popup';
 
-
-
-
-const SpFxWebpartSalesTools : React.FC<ISpFxWebpartSalesToolsProps> = (props) => {
-  const { trainingData } = props;
+const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => {
+  const { trainingData, description, uniqueAdsm, uniqueRoles } = props;
   const [selectedFilter, setSelectedFilter] = useState('Tool');
   const [selectedLevel, setSelectedLevel] = useState('All');
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  const demoCourses = ["Demo 1", "Demo 2", "Demo 3", "Demo 4", "Demo 5", "Demo 6", "Demo 7", "Demo 8", "Demo 9", "Demo 10", "Demo 11", "Demo 12", "Demo 13", "Demo 14"];
 
-  const onLevelReset = () => {
-    setSelectedLevel('All'); // כל פעם שמחליפים פילטר, הרמה מתאפסת ל-All
+  const uniqueCourses = Array.from(new Set(trainingData.data.map(item => item.course)));
+  // const uniqueAdsm = ['Prospect', 'Qualify', 'Validate', 'Prove', 'Proposal', 'Agreement', 'Closed Won', 'Closed Lost'];
+  // const uniqueRoles = ['Account Manager', 'Channel Manager', 'Security Engineer', 'SDR', 'Renewal'];
+  
+  // Function to get the default level based on the selected filter
+  const getDefaultLevel = (filter: string): string => {
+    if (filter === 'Tool') {
+      return 'All';
+    } else if (filter === 'ADSM') {
+      return 'Prospect';
+    } else if (filter === 'Role') {
+      return 'Account Manager';
+    }
+    return 'All'; // Default fallback
   };
+  // Reset selected level when filter changes
+  useEffect(() => {
+    setSelectedLevel(getDefaultLevel(selectedFilter));
+  }, [selectedFilter]);
 
+  return (
+    <div className="w-full relative overflow-hidden p-4">
+      {isPopupOpen && (
+        <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
+          <Popup courses={demoCourses} onClose={() => setPopupOpen(false)} />
+        </div>
+      )}
+      <h1 className="text-[#ee0c5d] text-[22px] mb-8 font-semibold">{description}</h1>
+      <div className="flex items-center justify-start space-x-4 p-2 max-w-full mb-8 overflow-visible">
+  <Pillars selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+  <Levels selectedLevel={selectedLevel} onLevelChange={setSelectedLevel} selectedFilter={selectedFilter} uniqueCourses={uniqueCourses} uniqueAdsm={uniqueAdsm} uniqueRoles={uniqueRoles}/>
+</div>
 
-
-    return (
-      <div className="w-full relative overflow-hidden p-4">
-      <h1 className="text-[#ee0c5d] text-[22px] mb-8 font-semibold"> Sales Tools & Processes</h1>
-      <div className="flex items-center justify-start space-x-2 p-2 max-w-[400px] mb-8">
-      <Pillars selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} onLevelReset={onLevelReset}/>
-      <Levels selectedLevel={selectedLevel} onLevelChange={setSelectedLevel} courses={trainingData.data} selectedFilter={selectedFilter}/>
-      </div>
       {/* Carousel */}
-      <Carousel courses={trainingData.data} selectedLevel={selectedLevel} selectedFilter={selectedFilter}/>
+      <Carousel courses={trainingData.data} selectedLevel={selectedLevel} selectedFilter={selectedFilter} uniqueRoles={uniqueRoles} onOpenPopup={() => setPopupOpen(true)}/>
     </div>
 
-    );
-  };
+  );
+};
 
-  export default SpFxWebpartSalesTools;
- 
+export default SpFxWebpartSalesTools;
