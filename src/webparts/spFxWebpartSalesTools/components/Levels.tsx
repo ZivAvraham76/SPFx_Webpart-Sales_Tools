@@ -49,7 +49,7 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
             </button>
 
             {isOpen && (
-                <div className="absolute mt-2 w-[300px] rounded-md bg-white shadow-lg ring-1 ring-black/5 z-50 max-h-60 overflow-y-auto">
+                <div className="absolute mt-2 w-[300px] rounded-md bg-white shadow-lg ring-1 ring-black/5 z-50 max-h-30 overflow-y-auto">
                     {displayOptions.map((level) => (
                         <button key={level} onClick={() => handleLevelClick(level)}
                             className={`block w-full text-left px-4 py-2 text-sm ${level === selectedLevel ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'}`}>

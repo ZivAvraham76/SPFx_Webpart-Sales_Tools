@@ -20,10 +20,9 @@ interface CarouselProps {
     selectedFilter: string;
     selectedLevel: string;
     uniqueRoles: string[];
-    onOpenPopup: () => void;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLevel, uniqueRoles, onOpenPopup }) => {
+const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLevel, uniqueRoles }) => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
 
@@ -105,7 +104,7 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
             >
 {filteredCourses.map((course, index) => (
     <div key={index} className={`relative w-1/4 flex-shrink-0`}>
-        <Card data={course} selectedFilter={selectedFilter} selectedLevel={selectedLevel} onOpenPopup={onOpenPopup}/>
+        <Card data={course} selectedFilter={selectedFilter} selectedLevel={selectedLevel}/>
     </div>
 ))}
             </div>
