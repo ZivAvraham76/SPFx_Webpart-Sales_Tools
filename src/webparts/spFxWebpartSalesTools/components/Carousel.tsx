@@ -20,9 +20,10 @@ interface CarouselProps {
     selectedFilter: string;
     selectedLevel: string;
     uniqueRoles: string[];
+    onOpenPopup: () => void;
 }
 
-const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLevel, uniqueRoles }) => {
+const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLevel, uniqueRoles, onOpenPopup }) => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
 
@@ -99,17 +100,17 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
     return (
         <div className='relative w-full mx-auto overflow-hidden'>
             <div
-                className="flex transition-transform duration-500 ease-in-out gap-[45px]"
+                className="flex transition-transform duration-500 ease-in-out gap-[25px]"
                 style={{ transform: `translateX(-${currentIndex * 25}%)` }}
             >
 {filteredCourses.map((course, index) => (
     <div key={index} className={`relative w-1/4 flex-shrink-0`}>
-        <Card data={course} selectedFilter={selectedFilter} selectedLevel={selectedLevel}/>
+        <Card data={course} selectedFilter={selectedFilter} selectedLevel={selectedLevel} onOpenPopup={onOpenPopup}/>
     </div>
 ))}
             </div>
             {!right && (
-                <button className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handleNext}>
+                <button className="border border-[#41273c] absolute top-1/2 right-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handleNext}>
                     <svg
                         className="h-4 w-4 text-gray-800"
                         aria-hidden="true"
@@ -126,7 +127,7 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
                         />
                     </svg></button>
             )}
-            {!left && (<button className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handlePrev}>
+            {!left && (<button className="border border-[#41273c] absolute top-1/2 left-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handlePrev}>
                 <svg
                     className="h-4 w-4 text-gray-800"
                     aria-hidden="true"

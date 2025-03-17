@@ -18,13 +18,14 @@ interface CardProps {
     };
     selectedFilter: string;
     selectedLevel: string;
+    onOpenPopup: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ data, selectedFilter, selectedLevel }) => {
+const Card: React.FC<CardProps> = ({ data, selectedFilter, selectedLevel, onOpenPopup }) => {
   return (
-    <div className="h-[218px] w-[224px] rounded-lg border-2 border-[#41273c] flex flex-col overflow-hidden">
+    <div className="h-[238px] w-[244px] rounded-lg border-2 border-[#41273c] flex flex-col overflow-visible">
         <CardHeader course={data.course} adsm={data.adsm} selectedFilter={selectedFilter} selectedLevel={selectedLevel}/>
-        <CardBody name={data.name} accessUrl={data.accessUrl} />
+        <CardBody name={data.name} accessUrl={data.accessUrl} onOpenPopup={onOpenPopup}/>
     </div>
   );
 };

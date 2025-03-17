@@ -6,14 +6,18 @@ import Carousel from './Carousel';
 import Pillars from './Pillars';
 import Levels from './Levels';
 import { useState, useEffect } from 'react';
+import Popup from './popup/Popup';
+import fackdata from '../assets/fackData';
 
 const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => {
   const { trainingData, description, uniqueAdsm, uniqueRoles } = props;
   const [selectedFilter, setSelectedFilter] = useState('Tool');
   const [selectedLevel, setSelectedLevel] = useState('All');
 
+  const [isPopupOpen, setPopupOpen] = useState(false);
+  //  const demoCourses = ["Demo 1", "Demo 2", "Demo 3", "Demo 4", "Demo 5", "Demo 6", "Demo 7", "Demo 8", "Demo 9", "Demo 10", "Demo 11", "Demo 12", "Demo 13", "Demo 14"];
+
   const uniqueCourses = Array.from(new Set(trainingData.data.map(item => item.course)));
-  console.log("toolssss:", uniqueCourses);
   // const uniqueAdsm = ['Prospect', 'Qualify', 'Validate', 'Prove', 'Proposal', 'Agreement', 'Closed Won', 'Closed Lost'];
   // const uniqueRoles = ['Account Manager', 'Channel Manager', 'Security Engineer', 'SDR', 'Renewal'];
   
@@ -35,6 +39,19 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
 
   return (
     <div className="w-full relative overflow-hidden p-4">
+       {isPopupOpen && (
+         <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
+<Popup 
+  courseData={fackdata.Courses.map(course => ({
+    ...course,
+    Modules: course.Modules.map(module => ({
+      ...module,
+      StartDate: module.StartDate ?? "" // ממירים null למחרוזת ריקה
+    }))
+  }))} 
+  onClose={() => setPopupOpen(false)} 
+/></div>
+       )}
       <h1 className="text-[#ee0c5d] text-[22px] mb-8 font-semibold">{description}</h1>
       <div className="flex items-center justify-start space-x-4 p-2 max-w-full mb-8 overflow-visible">
   <Pillars selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
@@ -42,7 +59,7 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
 </div>
 
       {/* Carousel */}
-      <Carousel courses={trainingData.data} selectedLevel={selectedLevel} selectedFilter={selectedFilter} uniqueRoles={uniqueRoles}/>
+      <Carousel courses={trainingData.data} selectedLevel={selectedLevel} selectedFilter={selectedFilter} uniqueRoles={uniqueRoles} onOpenPopup={() => setPopupOpen(true)}/>
     </div>
 
   );

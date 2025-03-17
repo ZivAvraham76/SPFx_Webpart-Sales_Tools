@@ -15,13 +15,14 @@ import SpFxWebpartSalesTools from "./components/SpFxWebpartSalesTools";
 import { ISpFxWebpartSalesToolsProps } from "./components/ISpFxWebpartSalesToolsProps";
 
 
-export interface IZiv1WebPartProps {
+export interface ISpFxWebpartSalesToolsWebPartProps {
   description: string;
   uniqueAdsm: string[];
   uniqueRoles: string[];
   checkboxAdsm: string[];
   checkboxRoles: string[];
   backend_app_id: string;
+  backend_url: string;
 }
 
 
@@ -40,25 +41,33 @@ interface Course {
 }
 
 type PropertyPaneFieldValue = string | boolean | number | undefined;
-export default class Ziv1WebPart extends BaseClientSideWebPart<IZiv1WebPartProps> {
+export default class ISpFxWebpartSalesToolsWebPart extends BaseClientSideWebPart<ISpFxWebpartSalesToolsWebPartProps> {
 
   private Client: AadHttpClient;
   private trainingData: {data : Course[]};
   private newAdsm: string = '';
   private newRole: string = '';
 
+  
 
   public render(): void {
     if(!this.properties.backend_app_id){
       this.domElement.innerHTML = `<p>No backend_app_id</p>`;
       return;
-    } else 
+    } 
+    if(!this.properties.backend_url){
+      this.domElement.innerHTML = `<p>No backend_url</p>`;
+      return;
+    }
+    else 
     // Defer rendering until `trainingData` is fetched
     if (!this.trainingData) {
       this.domElement.innerHTML = `<p>Loading...</p>`; // Optional: show a loading message
 
       this.Client.get(
-        "http://localhost:3000/sp-data/4sp/Sales tools and processes | Video",
+        // "https://training-tools-portal-stg.checkpoint.com/sp-data/4sp/Sales tools and processes | Video",
+
+        `${this.properties.backend_url}`,
         AadHttpClient.configurations.v1
       )
         .then((response: HttpClientResponse): Promise<{data : Course[]}> => {
@@ -91,6 +100,7 @@ export default class Ziv1WebPart extends BaseClientSideWebPart<IZiv1WebPartProps
         checkboxAdsm: this.properties.checkboxAdsm || [],
         checkboxRoles: this.properties.checkboxRoles || [],
         backend_app_id: this.properties.backend_app_id,
+        backend_url: this.properties.backend_url,
       }
     );
 
@@ -188,6 +198,9 @@ export default class Ziv1WebPart extends BaseClientSideWebPart<IZiv1WebPartProps
     if (propertyPath === "backend_app_id") {
       this.onInit().catch(err => console.error(err));
     }
+    if (propertyPath === "backend_url") {
+      this.onInit().catch(err => console.error(err));
+    }
  
   }
 
@@ -249,6 +262,9 @@ protected get dataVersion(): Version {
               groupFields: [
                 PropertyPaneTextField('backend_app_id',{
                   label: "Please enter backend app id"
+                }),
+                PropertyPaneTextField('backend_url',{
+                  label: "Please enter backend url"
                 }),
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel

@@ -22,4 +22,5 @@ export interface ISpFxWebpartSalesToolsProps {
   checkboxAdsm: string[];
   checkboxRoles: string[];
   backend_app_id: string;
+  backend_url: string;
 }

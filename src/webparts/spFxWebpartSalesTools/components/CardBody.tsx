@@ -5,11 +5,12 @@ import '../../../../assets/dist/tailwind.css';
 interface CardBodyProps {
     name: string;
     accessUrl: string;
+    onOpenPopup: () => void; 
 }
 
-const CardBody: React.FC<CardBodyProps> = ({ name, accessUrl }) => {
+const CardBody: React.FC<CardBodyProps> = ({ name, accessUrl, onOpenPopup }) => {
     return (
-        <div className="h-[117-px] p-4 flex flex-col justify-between h-full relative">
+        <div className="p-4 flex flex-col justify-between h-full relative">
             {/* Main Section: litmos Learning Path Name */}
             <div className="relative group">
                 <h2 className="text-md font-semibold text-[#41273c] line-clamp-2">
@@ -27,8 +28,9 @@ const CardBody: React.FC<CardBodyProps> = ({ name, accessUrl }) => {
                 <div className="w-[106px] h-[22px] px-2 py-0.5 bg-[#ee0c5d] rounded-xl flex justify-center items-center">
                     <button
                         className="text-white text-xs font-normal"
-                        onClick={() => window.open(accessUrl, `_blank`)}
-                    >
+                         // onClick={() => window.open(accessUrl, `_blank`)}
+                         onClick={onOpenPopup}
+                     >
                         Video
                     </button>
                 </div>
