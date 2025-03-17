@@ -15,7 +15,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible,
     title,
     coursePercentageComplete,
     lmsCourseUrl,
-    isOptional, courseData}) => {
+    isOptional,courseData}) => {
 
   return (
 <div className="mb-1 flex w-full items-center justify-between rounded-xl bg-[#eff2f3] p-2">

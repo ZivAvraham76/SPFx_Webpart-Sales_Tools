@@ -1,9 +1,8 @@
 import * as React from "react";
-import { useContext } from "react";
+// import { useContext } from "react";
 import ModuleComplition from "./ModuleComplition";
-
-
-import AppContext from "../../../../Contexts";
+import ModuleTitle from "./ModuleTitle";
+import ModuleScore from "./ModuleScore";
 
 
 interface Module{
@@ -19,14 +18,12 @@ interface ModuleRowProps{
 }
 
 const ModuleRow: React.FC<ModuleRowProps> = ({ module }) => {
-    const { refreshData } = useContext(AppContext);
 
 
   return (
     <div
       className="flex items-center justify-between border-b border-b-[#f0f2f4] py-3 hover:cursor-pointer hover:bg-[#fbfcfd]"
       onClick={() => {
-        refreshData.current = true;
         window.open(module.LmsModuleUrl, "_blank", "noopener, noreferrer");
       }}
     >
@@ -37,13 +34,13 @@ const ModuleRow: React.FC<ModuleRowProps> = ({ module }) => {
             moduleStartDate={module.StartDate}
           />
         </div>
-        {/* <ModuleTitle moduleName={module.Name} /> */}
+        <ModuleTitle moduleName={module.Name} />
       </div>
       <div className="">
-        {/* <ModuleScore
+        <ModuleScore
           moduleScore={module.Score}
           moduleCompleted={module.Completed}
-        /> */}
+        />
       </div>
     </div>
   );

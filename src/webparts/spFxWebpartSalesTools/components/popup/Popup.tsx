@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState} from 'react';
 import Header from "./Header";
 import CourseDescription from "./CourseDescription";
-// import ModulesTable from "./ModulesTable";
+import ModulesTable from "./ModulesTable";
 
 
 interface Module{
@@ -23,18 +23,22 @@ interface Course{
   // isOptional: boolean,
 }
 
+
+
 interface PopupProps {
   courseData: Course[];
-  onClose: () => void;
 }
 
-const Popup: React.FC<PopupProps> = ({ courseData, onClose }) => {
+const CourseBoard: React.FC<PopupProps> = ({ courseData }) => {
 
   const [isVisible, SetIsVisible] = useState(false);
 
   const togglCourseDetails = () => {
     SetIsVisible(!isVisible);
   };
+
+  console.log("courseslen:",courseData.length);
+
 
 
 
@@ -68,9 +72,9 @@ const Popup: React.FC<PopupProps> = ({ courseData, onClose }) => {
           <div id="courseDiscriptionContainer" className="">
             <CourseDescription courseDescription={courseData[0].Description} />
           </div>
-          {/* <div id="moduleTableContainer" className="">
+          <div id="moduleTableContainer" className="">
             <ModulesTable modules={courseData[0].Modules} />
-          </div> */}
+          </div>
 
         </div>
 
@@ -78,44 +82,12 @@ const Popup: React.FC<PopupProps> = ({ courseData, onClose }) => {
             </div>
             </div>
             </div>
+
+            
             
           );
         };
 
 
-      
 
-
-
-
-
-
-
-
-
-
-      // {/* 🔹 Course List */}
-      {/* // <div className="mb-4 w-full max-h-[300px] overflow-y-auto px-2">
-      //   {courseData.map((module, index) => ( */}
-      //     <div key={index} className="w-full text-center">
-      //       <button
-      //         type="button"
-      //         className="w-full bg-gray-200 text-gray-900 py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none"
-      //       >
-      //         {module.Name}
-      //         {module.Score}
-      //       </button>
-      //     </div>
-      //   ))}
-      // </div>
-
-      // {/* 🔹 Close Button */}
-      // <button
-      //   className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 focus:outline-none"
-      //   onClick={onClose}
-      // >
-      //   Close
-      // </button>
-
-
-export default Popup;
+export default CourseBoard;

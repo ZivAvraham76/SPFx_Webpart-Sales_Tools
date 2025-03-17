@@ -49,7 +49,7 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
       StartDate: module.StartDate ?? "" // ממירים null למחרוזת ריקה
     }))
   }))} 
-  onClose={() => setPopupOpen(false)} 
+
 /></div>
        )}
       <h1 className="text-[#ee0c5d] text-[22px] mb-8 font-semibold">{description}</h1>
