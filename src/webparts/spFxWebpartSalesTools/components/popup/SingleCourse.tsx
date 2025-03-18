@@ -9,7 +9,7 @@ interface Module {
     Name: string;
     Score: number;
     Completed: boolean;
-    StartDate: string;
+    StartDate: string | null;
     LmsModuleUrl: string;
   }
   
@@ -20,6 +20,7 @@ interface Module {
     LmsCourseUrl: string;
     Description: string;
     Modules: Module[];
+    isOptional?: boolean,
   }
 
 interface SingleCourseProps {
@@ -30,7 +31,7 @@ interface SingleCourseProps {
 const SingleCourse: React.FC<SingleCourseProps> = ({courseData}) => {
 
   return (
-    <div className="h-full w-full bg-blue-50">
+    <div className="h-full w-full">
       <div
         id="headerContainer"
         className="mb-8 flex w-full items-center justify-between py-2"
@@ -41,6 +42,7 @@ const SingleCourse: React.FC<SingleCourseProps> = ({courseData}) => {
             <div className="ml-2.5">
               <ArrowUpRightFromSquare
                 lmsCourseUrl={courseData.LmsCourseUrl}
+                size={5}
               />
             </div>
           )}

@@ -164,5 +164,5 @@ const fackdata = {
     //   ],
     // },
   ],
-}as const;
+}
 export default fackdata;

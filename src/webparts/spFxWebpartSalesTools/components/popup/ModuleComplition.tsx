@@ -5,7 +5,7 @@ import StartSvgIcon from "./svg/StartSvgIcon";
 
 interface ModuleComplitionProps{
     moduleCompleted: boolean,
-    moduleStartDate: string,
+    moduleStartDate: string | null,
 }
 
 const ModuleComplition: React.FC<ModuleComplitionProps> = ({ moduleCompleted, moduleStartDate }) => {

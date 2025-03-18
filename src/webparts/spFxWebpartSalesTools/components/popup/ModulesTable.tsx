@@ -6,7 +6,7 @@ interface Module{
     Name: string,
     Score: number,
     Completed: boolean,
-    StartDate: string,
+    StartDate: string | null,
     LmsModuleUrl: string,
   }
 

@@ -2,13 +2,14 @@ import * as React from "react";
 
 interface ArrowUpRightFromSquareProps {
   lmsCourseUrl?: string;
+  size: number,
 }
 
-const ArrowUpRightFromSquare: React.FC<ArrowUpRightFromSquareProps> = ({lmsCourseUrl}) => {
+const ArrowUpRightFromSquare: React.FC<ArrowUpRightFromSquareProps> = ({lmsCourseUrl, size = 4}) => {
 
   return (
     <div
-      className={`widescreen:h-5 widescreen:w-5 tablet:h-3 tablet:w-3 text-[#607d8a] hover:cursor-pointer`}
+      className={`widescreen:h-${size} widescreen:w-${size} tablet:h-3 tablet:w-3 text-[#607d8a] hover:cursor-pointer`}
       onClick={() => {
         window.open(lmsCourseUrl, "_blank", "noopener, noreferrer");
       }}

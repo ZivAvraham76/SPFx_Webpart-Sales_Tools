@@ -6,8 +6,14 @@ import Carousel from './Carousel';
 import Pillars from './Pillars';
 import Levels from './Levels';
 import { useState, useEffect } from 'react';
-import Popup from './popup/Popup';
+// import Popup from './popup/Popup';
 import fackdata from '../assets/fackData';
+import CoursesBoard from './popup/CoursesBoard';
+
+
+
+
+
 
 const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => {
   const { trainingData, description, uniqueAdsm, uniqueRoles } = props;
@@ -41,14 +47,8 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
     <div className="w-full relative overflow-hidden p-4">
        {isPopupOpen && (
          <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
-<Popup 
-  courseData={fackdata.Courses.map(course => ({
-    ...course,
-    Modules: course.Modules.map(module => ({
-      ...module,
-      StartDate: module.StartDate ?? "" // ממירים null למחרוזת ריקה
-    }))
-  }))} 
+<CoursesBoard 
+  data={fackdata} 
 
 /></div>
        )}

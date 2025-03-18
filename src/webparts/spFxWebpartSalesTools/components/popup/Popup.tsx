@@ -9,7 +9,7 @@ interface Module{
   Name: string,
   Score: number,
   Completed: boolean,
-  StartDate: string,
+  StartDate: string | null,
   LmsModuleUrl: string,
 }
 
@@ -20,16 +20,19 @@ interface Course{
   LmsCourseUrl: string,
   Description:string,
   Modules: Module[],
-  // isOptional: boolean,
+  isOptional?: boolean,
 }
-
-
 
 interface PopupProps {
-  courseData: Course[];
+  courseData: Course;
+  data: {
+    VLP_NAME: string;
+    VLP_PercentageComplete: number;
+    Courses: Course[];
+  };
 }
 
-const CourseBoard: React.FC<PopupProps> = ({ courseData }) => {
+const Popup: React.FC<PopupProps> = ({ courseData,data }) => {
 
   const [isVisible, SetIsVisible] = useState(false);
 
@@ -37,21 +40,19 @@ const CourseBoard: React.FC<PopupProps> = ({ courseData }) => {
     SetIsVisible(!isVisible);
   };
 
-  console.log("courseslen:",courseData.length);
-
 
 
 
   console.log("course data:", courseData);
-  console.log("course desc:", courseData[0].Description);
-  console.log("course data:", courseData[0].PercentageComplete);
+  console.log("course desc:", courseData.Description);
+  console.log("course data:", courseData.PercentageComplete);
 
 
 
   return (
-    <div className="h-screen w-full py-10">
-      <div className="mx-auto h-full w-9/12 rounded-3xl border-4 border-[#f0f2f4] bg-white px-10 py-10">
-      <div className="max-h-100 overflow-y-auto px-5">
+    // <div className="h-screen w-full py-10">
+    //   <div className="mx-auto h-full w-9/12 rounded-3xl border-4 border-[#f0f2f4] bg-white px-10 py-10">
+    //   <div className="max-h-100 overflow-y-auto px-5">
     <div className="h-full w-full">
       <div
         id="headerContainer"
@@ -60,28 +61,28 @@ const CourseBoard: React.FC<PopupProps> = ({ courseData }) => {
       >
         <Header
           isVisible={isVisible}
-          title={courseData[0].Name}
-          coursePercentageComplete={courseData[0].PercentageComplete}
-          lmsCourseUrl={courseData[0].LmsCourseUrl}
-          // isOptional={courseData[0].isOptional}
-          courseData={courseData}
+          title={courseData.Name}
+          coursePercentageComplete={courseData.PercentageComplete}
+          lmsCourseUrl={courseData.LmsCourseUrl}
+          isOptional={courseData.isOptional}
+          data={data}
         />
       </div>
 
+      {isVisible && (
         <div className="">
           <div id="courseDiscriptionContainer" className="">
-            <CourseDescription courseDescription={courseData[0].Description} />
+            <CourseDescription courseDescription={courseData.Description} />
           </div>
           <div id="moduleTableContainer" className="">
-            <ModulesTable modules={courseData[0].Modules} />
+            <ModulesTable modules={courseData.Modules} />
           </div>
 
         </div>
+        )}
 
             </div>
-            </div>
-            </div>
-            </div>
+
 
             
             
@@ -90,4 +91,4 @@ const CourseBoard: React.FC<PopupProps> = ({ courseData }) => {
 
 
 
-export default CourseBoard;
+export default Popup;
