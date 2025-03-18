@@ -5,7 +5,7 @@ import '../../../../assets/dist/tailwind.css';
 import Carousel from './Carousel';
 import Pillars from './Pillars';
 import Levels from './Levels';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef} from 'react';
 // import Popup from './popup/Popup';
 import fackdata from '../assets/fackData';
 import CoursesBoard from './popup/CoursesBoard';
@@ -21,6 +21,30 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
   const [selectedLevel, setSelectedLevel] = useState('All');
 
   const [isPopupOpen, setPopupOpen] = useState(false);
+
+
+  const popupRef = useRef<HTMLDivElement>(null);
+
+  // פונקציה שמטפלת בלחיצה מחוץ לחלון הפופאפ
+  const handleClickOutside = (event: MouseEvent) => {
+    console.log("popupRef.current:", popupRef.current);
+    if (popupRef.current && !popupRef.current.contains(event.target as Node)) {
+      console.log("Clicked outside! Closing popup.");
+      setPopupOpen(false);
+    }
+  };
+
+  // הוספה והסרה של event listener כדי לזהות קליקים מחוץ לקומפוננטה
+  useEffect(() => {
+    if (isPopupOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isPopupOpen]);
   //  const demoCourses = ["Demo 1", "Demo 2", "Demo 3", "Demo 4", "Demo 5", "Demo 6", "Demo 7", "Demo 8", "Demo 9", "Demo 10", "Demo 11", "Demo 12", "Demo 13", "Demo 14"];
 
   const uniqueCourses = Array.from(new Set(trainingData.data.map(item => item.course)));
@@ -46,8 +70,9 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
   return (
     <div className="w-full relative overflow-hidden p-4">
        {isPopupOpen && (
-         <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
+         <div className="fixed inset-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50" onClick={() => setPopupOpen(false)} >
 <CoursesBoard 
+ref={popupRef}
   data={fackdata} 
 
 /></div>

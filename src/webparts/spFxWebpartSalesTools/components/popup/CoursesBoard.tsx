@@ -2,6 +2,8 @@ import * as React from "react";
 import SingleCourse from "./SingleCourse";
 import VlpHeader from "./VlpHeader";
 import Popup from "./Popup"
+import { forwardRef } from 'react';
+
 
 interface Module {
     Name: string;
@@ -31,15 +33,15 @@ interface Module {
   }
   
 
-const CoursesBoard: React.FC<CourseBoardProps> = ({ data }) => {
+  const CoursesBoard = forwardRef<HTMLDivElement, CourseBoardProps>(({ data }, ref)  => {
 const courses = data.Courses;
 console.log("courseslen:",courses.length);
   const VLP_PercentageComplete = data.VLP_PercentageComplete;
   const VLP_NAME = data.VLP_NAME;
 
   return (
-    <div className="h-screen w-full py-10">
-      <div className="mx-auto h-full w-9/12 rounded-3xl border-4 border-[#f0f2f4] bg-white px-10 py-10 overflow-hidden">
+    <div ref={ref} className="relative h-[90vh] w-full flex items-center justify-center">
+      <div className="mx-auto h-full w-9/12 rounded-3xl border-4 border-[#f0f2f4] bg-white px-10 py-10 overflow-hidden shadow-lg" onClick={(e) => e.stopPropagation()}>
         <div className="max-h-full overflow-y-auto px-5">
           {courses?.length === 1 ? (
             <SingleCourse courseData={courses[0]} />
@@ -58,6 +60,6 @@ console.log("courseslen:",courses.length);
       </div>
     </div>
   );
-};
+});
 
 export default CoursesBoard;
