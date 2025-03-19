@@ -39,6 +39,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({coursePercentageComplete}) => 
   return (
     <div className="border-[#607d8a] h-5 w-full rounded-xl border p-1">
       <div
+
         className={`from-[#ffb700] to-[#f8d67b] h-full rounded-xl bg-gradient-to-r ${progressBar}`}
       ></div>
     </div>

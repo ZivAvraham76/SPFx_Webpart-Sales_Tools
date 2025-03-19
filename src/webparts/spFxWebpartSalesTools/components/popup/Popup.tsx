@@ -1,11 +1,11 @@
 import * as React from "react";
-import { useState} from 'react';
+import { useState } from 'react';
 import Header from "./Header";
 import CourseDescription from "./CourseDescription";
 import ModulesTable from "./ModulesTable";
 
 
-interface Module{
+interface Module {
   Name: string,
   Score: number,
   Completed: boolean,
@@ -13,12 +13,12 @@ interface Module{
   LmsModuleUrl: string,
 }
 
-interface Course{
+interface Course {
   Name: string;
   Complete: boolean,
   PercentageComplete: number,
   LmsCourseUrl: string,
-  Description:string,
+  Description: string,
   Modules: Module[],
   isOptional?: boolean,
 }
@@ -32,33 +32,24 @@ interface PopupProps {
   };
 }
 
-const Popup: React.FC<PopupProps> = ({ courseData,data }) => {
+const Popup: React.FC<PopupProps> = ({ courseData, data }) => {
 
+  // State to manage whether the course details are visible or not
   const [isVisible, SetIsVisible] = useState(false);
 
+  // Function to toggle the visibility of the course details
   const togglCourseDetails = () => {
     SetIsVisible(!isVisible);
   };
 
-
-
-
-  console.log("course data:", courseData);
-  console.log("course desc:", courseData.Description);
-  console.log("course data:", courseData.PercentageComplete);
-
-
-
   return (
-    // <div className="h-screen w-full py-10">
-    //   <div className="mx-auto h-full w-9/12 rounded-3xl border-4 border-[#f0f2f4] bg-white px-10 py-10">
-    //   <div className="max-h-100 overflow-y-auto px-5">
     <div className="h-full w-full">
       <div
         id="headerContainer"
         className="hover:cursor-pointer"
-        onClick={() => togglCourseDetails()}
+        onClick={() => togglCourseDetails()} // Toggle the details visibility when clicked
       >
+        {/* Render the header component */}
         <Header
           isVisible={isVisible}
           title={courseData.Name}
@@ -68,7 +59,8 @@ const Popup: React.FC<PopupProps> = ({ courseData,data }) => {
           data={data}
         />
       </div>
-
+      
+      {/* Conditionally render the course details when `isVisible` is true */}
       {isVisible && (
         <div className="">
           <div id="courseDiscriptionContainer" className="">
@@ -79,16 +71,10 @@ const Popup: React.FC<PopupProps> = ({ courseData,data }) => {
           </div>
 
         </div>
-        )}
+      )}
 
-            </div>
-
-
-            
-            
-          );
-        };
-
-
+    </div>
+  );
+};
 
 export default Popup;

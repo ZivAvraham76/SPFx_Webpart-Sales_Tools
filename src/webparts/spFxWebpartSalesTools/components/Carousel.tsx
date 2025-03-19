@@ -44,17 +44,14 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
                 return true;
             }
         }
-
         if (selectedFilter === 'Role' && course.adsm !== '') {
             if (selectedLevel === 'All') {
                 return true;
             }
 
-            // בדוק אם selectedLevel נמצא ב-uniqueRoles
+            // Check if selectedLevel exists in uniqueRoles
             const roleIndex = uniqueRoles.indexOf(selectedLevel);
-        
-            // אם selectedLevel נמצא ב-uniqueRoles (i.e., הוא אינדקס חוקי)
-            if (roleIndex !== -1 && course.adsm.includes((roleIndex+1).toString())) {
+            if (roleIndex !== -1 && course.adsm.includes((roleIndex + 1).toString())) {
                 return true;
             }
         }
@@ -62,24 +59,27 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
         return false; // otherwise, don't display the course
     });
 
-    console.log('Filtered Courses:', filteredCourses);
-    console.log('Selected Filter:', selectedFilter);
-    console.log('Selected Level:', selectedLevel);
-
+    // Reset currentIndex when the filtered courses change
     React.useEffect(() => {
         setCurrentIndex(0);
     }, [filteredCourses.length]);
-    const [left, setLeft] = React.useState(false);
-    const [right, setRight] = React.useState(false);
+
+    const [left, setLeft] = React.useState(false); // State for showing/hiding the left arrow
+    const [right, setRight] = React.useState(false); // State for showing/hiding the right arrow
+
+    // Function to handle the "Next" button click
     const handleNext = (): void => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % filteredCourses.length);
     };
+
+    // Function to handle the "Previous" button click
     const handlePrev = (): void => {
         setCurrentIndex((prevIndex) =>
             (prevIndex - 1 + filteredCourses.length) % filteredCourses.length
         );
     };
 
+    // Show right arrow if the currentIndex is at the end of the filteredCourses list
     React.useEffect(() => {
         if (currentIndex > filteredCourses.length - 4) {
             setRight(true);
@@ -88,6 +88,8 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
             setRight(false);
         }
     }, [currentIndex, filteredCourses]);
+
+    // Show right arrow if the currentIndex is at the beginning of the filteredCourses list
     React.useEffect(() => {
         if (currentIndex === 0) {
             setLeft(true);
@@ -99,16 +101,20 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
 
     return (
         <div className='relative w-full mx-auto overflow-hidden'>
+            {/* Carousel */}
             <div
                 className="flex transition-transform duration-500 ease-in-out gap-[25px]"
                 style={{ transform: `translateX(-${currentIndex * 25}%)` }}
             >
-{filteredCourses.map((course, index) => (
-    <div key={index} className={`relative w-1/4 flex-shrink-0`}>
-        <Card data={course} selectedFilter={selectedFilter} selectedLevel={selectedLevel} onOpenPopup={onOpenPopup}/>
-    </div>
-))}
+                {/* Map through the filtered courses and render each course as a Card */}
+                {filteredCourses.map((course, index) => (
+                    <div key={index} className={`relative w-1/4 flex-shrink-0`}>
+                        <Card data={course} selectedFilter={selectedFilter} selectedLevel={selectedLevel} onOpenPopup={onOpenPopup} />
+                    </div>
+                ))}
             </div>
+
+            {/* Right arrow button */}
             {!right && (
                 <button className="border border-[#41273c] absolute top-1/2 right-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handleNext}>
                     <svg
@@ -127,6 +133,8 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
                         />
                     </svg></button>
             )}
+
+             {/* Left arrow button */}
             {!left && (<button className="border border-[#41273c] absolute top-1/2 left-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handlePrev}>
                 <svg
                     className="h-4 w-4 text-gray-800"

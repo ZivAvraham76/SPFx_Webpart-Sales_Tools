@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-Bold.ttf")format('truetype');
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-Regular.ttf")format('truetype');
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("fonts/Poppins-SemiBold.ttf")format('truetype');
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: "TitanOne";
+    src: url("fonts/TitanOne-Regular.ttf")format('truetype');
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f0f2f4 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #f0f2f4;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #ffffff;
+  border-radius: 14px;
+  border: 3px solid #f0f2f4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+font-family: 'Poppins', sans-serif !important;
+}

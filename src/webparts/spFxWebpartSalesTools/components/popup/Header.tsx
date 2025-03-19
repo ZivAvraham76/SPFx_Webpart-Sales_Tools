@@ -43,6 +43,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible,
 
   return (
 <div className="mb-1 flex w-full items-center justify-between rounded-xl bg-[#eff2f3] p-2">
+      {/* Render the CourseTitle component */}
       <CourseTitle
         title={title}
         lmsCourseUrl={lmsCourseUrl}
@@ -50,6 +51,7 @@ const Header: React.FC<HeaderProps> = ({ isVisible,
         isOptional={isOptional ?? false}
         data={data}
       />
+       {/* Render the Progress component */}
       <Progress coursePercentageComplete={coursePercentageComplete ?? 0} />
     </div>
   );

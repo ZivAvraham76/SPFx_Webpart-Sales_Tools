@@ -4,7 +4,6 @@ interface LevelsProps {
     selectedLevel: string;
     onLevelChange: (level: string) => void;
     selectedFilter: string;
-    // courses: { course: string, adsm: string}[];
     uniqueCourses: string[];
     uniqueAdsm: string[];
     uniqueRoles: string[];
@@ -14,23 +13,17 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
 
     // Dropdown state
     const [isOpen, setIsOpen] = React.useState(false);
-    const toggleDropdown = ():void => setIsOpen(!isOpen);
-    const handleLevelClick = (level: string) : void => {
+    const toggleDropdown = (): void => setIsOpen(!isOpen);
+    const handleLevelClick = (level: string): void => {
         onLevelChange(level);
         setIsOpen(false);
     };
 
-    // Get unique courses and unique adsm
-    // const uniqueCourses = Array.from(new Set(courses.map(item => item.course)));
-    // // const uniqueAdsm = Array.from(new Set(courses.map(item => item.adsm)));
-    // const uniqueAdsm = ['Prospect', 'Qualify', 'Validate', 'Prove', 'Proposal', 'Agreement', 'Closed Won', 'Closed Lost'];
-    // const uniqueRoles = ['Account Manager', 'Channel Manager', 'Security Engineer', 'SDR', 'Renewal'];
-
     // Get the display options based on the selected filter
-    const displayOptions = 
-    selectedFilter === 'Tool' ? uniqueCourses :
-    selectedFilter === 'ADSM' ? uniqueAdsm : 
-    selectedFilter === 'Role' ? uniqueRoles : [];
+    const displayOptions =
+        selectedFilter === 'Tool' ? uniqueCourses :
+            selectedFilter === 'ADSM' ? uniqueAdsm :
+                selectedFilter === 'Role' ? uniqueRoles : [];
 
     // Get the button label based on the selected filter                       
     const getButtonLabel = (): string => {
@@ -40,7 +33,7 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
     return (
         <div className="relative inline-block text-left h-full">
             <button onClick={toggleDropdown} className="w-[170px] h-8 px-2 py-1 pr-8 rounded-full text-[#41273c] text-lg border border-[#41273c] flex items-center justify-between">
-                <span className="text-[#41273c] text-xs font-medium">
+                <span className="text-[#41273c] text-xs font-medium font-Poppins">
                     {getButtonLabel()}
                 </span>
                 <svg className="absolute right-2" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

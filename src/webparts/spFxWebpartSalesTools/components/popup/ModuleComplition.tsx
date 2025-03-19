@@ -15,10 +15,13 @@ const ModuleComplition: React.FC<ModuleComplitionProps> = ({ moduleCompleted, mo
     <div className="">
     <div className="">
       {moduleCompleted ? (
+        // If the module is completed, render the DoneSvgIcon
         <DoneSvgIcon />
       ) : moduleStartDate ? (
+        // If the module has started but not completed, render the InprogressSvgIcon
         <InprogressSvgIcon />
       ) : (
+        // If the module has not started yet, render the StartSvgIcon
         <StartSvgIcon />
       )}
     </div>

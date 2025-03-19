@@ -24,7 +24,7 @@ const CardBody: React.FC<CardBodyProps> = ({ name, accessUrl, onOpenPopup }) => 
             {/* Footer Section: Learning Path Button & Progress Ring */}
             <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between w-full">
 
-                {/* Learning Path Button - Left */}
+                {/* Video Button */}
                 <div className="w-[106px] h-[22px] px-2 py-0.5 bg-[#ee0c5d] rounded-xl flex justify-center items-center">
                     <button
                         className="text-white text-xs font-normal"

@@ -3,15 +3,14 @@ import * as React from 'react';
 interface PillarsProps {
     selectedFilter: string;
     onFilterChange: (filter: string) => void;
-    // onLevelReset: () => void;
 }
 
-const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange}) => {
+const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange }) => {
     const filters = ['Tool', 'ADSM', 'Role'];
 
-    const handleFilterChange = (filter: string) : void => {
+    // Function to handle when a filter button is clicked
+    const handleFilterChange = (filter: string): void => {
         onFilterChange(filter);
-        // onLevelReset();
     };
 
     return (
@@ -21,7 +20,7 @@ const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange}) => {
                 {filters.map((filter) => (
                     <button
                         key={filter}
-                        className={`px-3 py-1 font-medium transition-colors duration-200 
+                        className={`px-3 py-1 font-medium font-Poppins transition-colors duration-200 
                             ${selectedFilter === filter ? 'bg-[#41273c] text-white' : 'bg-white text-[#41273c] hover:bg-[#896f85] hover:text-white'}`}
                         onClick={() => handleFilterChange(filter)}
                     >
