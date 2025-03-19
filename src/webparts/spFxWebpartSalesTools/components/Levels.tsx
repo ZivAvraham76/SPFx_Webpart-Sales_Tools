@@ -27,8 +27,17 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
 
     // Get the button label based on the selected filter                       
     const getButtonLabel = (): string => {
-        return selectedLevel === 'All' ? `Select ${selectedFilter}` : selectedLevel;
-    }
+        if (selectedLevel === 'All') {
+          if (selectedFilter === 'Tool') {
+            return 'Select Tool';
+          } else if (selectedFilter === 'ADSM') {
+            return 'Select ADSM phase';
+          } else if (selectedFilter === 'Role') {
+            return 'Select Role';
+          }
+        } 
+          return selectedLevel;
+      };
 
     return (
         <div className="relative inline-block text-left h-full">

@@ -3,14 +3,15 @@ import * as React from 'react';
 interface PillarsProps {
     selectedFilter: string;
     onFilterChange: (filter: string) => void;
+    onLevelReset: () => void;
 }
 
-const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange }) => {
+const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onLevelReset}) => {
     const filters = ['Tool', 'ADSM', 'Role'];
 
-    // Function to handle when a filter button is clicked
-    const handleFilterChange = (filter: string): void => {
+    const handleFilterChange = (filter: string) : void => {
         onFilterChange(filter);
+        onLevelReset();
     };
 
     return (

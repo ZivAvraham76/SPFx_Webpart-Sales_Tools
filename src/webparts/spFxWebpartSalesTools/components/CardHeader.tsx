@@ -24,16 +24,7 @@ const CardHeader: React.FC<CardHeaderProps> = ({ course, adsm, selectedFilter, s
                 
                 {/* Display the header text based on the selected filter */}
                 <div className="absolute inset-0 flex items-center text-[11px] text-[#41273c] font-bold text-left px-4">
-                    {selectedLevel === 'All'
-                        ? (selectedFilter === 'Tool'
-                            ? course
-                            : selectedFilter === 'ADSM'
-                                ? adsm
-                                // : selectedFilter === 'Role'
-                                // ? role 
-                                : '')
-                        : selectedLevel
-                    }
+{course}
                 </div>
             </div>
         </div>

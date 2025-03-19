@@ -23,6 +23,7 @@ interface CarouselProps {
     onOpenPopup: () => void;
 }
 
+
 const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLevel, uniqueRoles, onOpenPopup }) => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
@@ -38,13 +39,13 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
         }
 
         // if selectedFilter is 'adsm'
-        if (selectedFilter === 'ADSM' && course.adsm !== '') {
+        if (selectedFilter === 'ADSM') {
             // filter by course adsm
             if (selectedLevel === 'All' || course.adsm.includes(selectedLevel)) {
                 return true;
             }
         }
-        if (selectedFilter === 'Role' && course.adsm !== '') {
+        if (selectedFilter === 'Role') {
             if (selectedLevel === 'All') {
                 return true;
             }

@@ -44,21 +44,25 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
   // const uniqueRoles = ['Account Manager', 'Channel Manager', 'Security Engineer', 'SDR', 'Renewal'];
 
   // Function to get the default level based on the selected filter
-  const getDefaultLevel = (filter: string): string => {
-    if (filter === 'Tool') {
-      return 'All';
-    } else if (filter === 'ADSM') {
-      return 'Prospect';
-    } else if (filter === 'Role') {
-      return 'Account Manager';
-    }
-    return 'All'; // Default fallback
-  };
+  // const getDefaultLevel = (filter: string): string => {
+  //   if (filter === 'Tool') {
+  //     return 'All';
+  //   } else if (filter === 'ADSM') {
+  //     return 'Prospect';
+  //   } else if (filter === 'Role') {
+  //     return 'Account Manager';
+  //   }
+  //   return 'All'; // Default fallback
+  // };
 
   // Reset selected level when filter changes
-  useEffect(() => {
-    setSelectedLevel(getDefaultLevel(selectedFilter));
-  }, [selectedFilter]);
+  // useEffect(() => {
+  //   setSelectedLevel(getDefaultLevel(selectedFilter));
+  // }, [selectedFilter]);
+
+  const onLevelReset = () => {
+    setSelectedLevel('All'); // כל פעם שמחליפים פילטר, הרמה מתאפסת ל-All
+  };
 
   return (
     <div className="w-full relative overflow-hidden p-4">
@@ -77,7 +81,7 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
 
       {/* Pillars and Levels controls */}
       <div className="flex items-center justify-start space-x-4 p-2 max-w-full mb-8 overflow-visible">
-        <Pillars selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />
+        <Pillars selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} onLevelReset={onLevelReset}/>
         <Levels selectedLevel={selectedLevel} onLevelChange={setSelectedLevel} selectedFilter={selectedFilter} uniqueCourses={uniqueCourses} uniqueAdsm={uniqueAdsm} uniqueRoles={uniqueRoles} />
       </div>
 
