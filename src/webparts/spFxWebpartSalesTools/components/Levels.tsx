@@ -41,7 +41,7 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
 
     return (
         <div className="relative inline-block text-left h-full">
-            <button onClick={toggleDropdown} className="w-[170px] h-8 px-2 py-1 pr-8 rounded-full text-[#41273c] text-lg border border-[#41273c] flex items-center justify-between">
+            <button onClick={toggleDropdown} className="w-[170px] h-8 px-2 py-1 pr-8 rounded-full text-[#41273c] text-lg border-2 border-[#41273c] flex items-center justify-between">
                 <span className="text-[#41273c] text-xs font-medium font-Poppins">
                     {getButtonLabel()}
                 </span>

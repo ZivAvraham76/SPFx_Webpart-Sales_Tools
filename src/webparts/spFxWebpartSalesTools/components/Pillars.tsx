@@ -15,9 +15,9 @@ const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onLev
     };
 
     return (
-        <div className="flex items-center gap-2">
-            <div className="text-[#41273c] text-sm font-semibold">Search By</div>
-            <div className="h-8 text-xs flex border border-[#41273c] rounded-full overflow-hidden divide-x divide-[#41273c]">
+        <div className="flex items-center gap-2 font-Poppins">
+            <div className="text-[#41273c] justify-start text-lg font-semibold font-Poppins">Search By</div>
+            <div className="h-8 text-xs flex border-2 border-[#41273c] rounded-full overflow-hidden divide-x-2 divide-[#41273c]">
                 {filters.map((filter) => (
                     <button
                         key={filter}

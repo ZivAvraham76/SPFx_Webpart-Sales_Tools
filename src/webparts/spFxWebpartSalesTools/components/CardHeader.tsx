@@ -12,9 +12,9 @@ const CardHeader: React.FC<CardHeaderProps> = ({ course, adsm, selectedFilter, s
     // Display the header text based on the selected filter
     
     return (
-        <div className="relative w-full h-[121px] flex-shrink-0 overflow-hidden">
+        <div className="relative w-full h-[121px]">
             {/* Course Image */}
-            <img className="w-full h-full object-cover" src="https://picsum.photos/160" alt="Course" />
+            <img className="h-full w-full" src="https://picsum.photos/160" alt="Course" />
 
             {/* Level Badge */}
             <div className="absolute top-2 left-2 w-[150px] h-[40px] flex items-center justify-center">

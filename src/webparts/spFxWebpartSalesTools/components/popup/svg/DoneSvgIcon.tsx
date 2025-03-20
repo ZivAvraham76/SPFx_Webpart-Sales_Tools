@@ -7,7 +7,7 @@ const DoneSvgIcon: React.FC = () => {
       <svg className="" viewBox="0 0 28.85 28.85">
         <g id="Layer_1-2">
           <circle
-            className="fill-[#0ccf6b] stroke-0"
+            className="fill-[#EE0C5D] stroke-0"
             cx="14.42"
             cy="14.42"
             r="14.42"
