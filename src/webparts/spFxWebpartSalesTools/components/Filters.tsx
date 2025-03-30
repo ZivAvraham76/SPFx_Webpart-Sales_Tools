@@ -3,15 +3,18 @@ import * as React from 'react';
 interface PillarsProps {
     selectedFilter: string;
     onFilterChange: (filter: string) => void;
-    onLevelReset: () => void;
+    onProductReset: () => void;
 }
 
-const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onLevelReset}) => {
+const Filters: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onProductReset}) => {
+
+    // Defining an array of possible filters
     const filters = ['Tool', 'ADSM', 'Role'];
 
+    // Function to handle when a filter is changed
     const handleFilterChange = (filter: string) : void => {
         onFilterChange(filter);
-        onLevelReset();
+        onProductReset();
     };
 
     return (
@@ -33,4 +36,4 @@ const Pillars: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onLev
     );
 };
 
-export default Pillars;
+export default Filters;

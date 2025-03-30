@@ -1,21 +1,21 @@
 import * as React from 'react';
 
 interface LevelsProps {
-    selectedLevel: string;
-    onLevelChange: (level: string) => void;
+    selectedProduct: string;
+    onProductChange: (level: string) => void;
     selectedFilter: string;
     uniqueCourses: string[];
     uniqueAdsm: string[];
     uniqueRoles: string[];
 }
 
-const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedFilter, uniqueCourses, uniqueAdsm, uniqueRoles }) => {
+const DropDownProducts: React.FC<LevelsProps> = ({ selectedProduct, onProductChange, selectedFilter, uniqueCourses, uniqueAdsm, uniqueRoles }) => {
 
     // Dropdown state
     const [isOpen, setIsOpen] = React.useState(false);
     const toggleDropdown = (): void => setIsOpen(!isOpen);
     const handleLevelClick = (level: string): void => {
-        onLevelChange(level);
+        onProductChange(level);
         setIsOpen(false);
     };
 
@@ -27,7 +27,7 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
 
     // Get the button label based on the selected filter                       
     const getButtonLabel = (): string => {
-        if (selectedLevel === 'All') {
+        if (selectedProduct === 'All') {
           if (selectedFilter === 'Tool') {
             return 'Select Tool';
           } else if (selectedFilter === 'ADSM') {
@@ -36,7 +36,7 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
             return 'Select Role';
           }
         } 
-          return selectedLevel;
+          return selectedProduct;
       };
 
     return (
@@ -54,7 +54,7 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
                 <div className="absolute mt-2 w-[300px] rounded-md bg-white shadow-lg ring-1 ring-black/5 z-50 max-h-30 overflow-y-auto">
                     {displayOptions.map((level) => (
                         <button key={level} onClick={() => handleLevelClick(level)}
-                            className={`block w-full text-left px-4 py-2 text-sm ${level === selectedLevel ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'}`}>
+                            className={`block w-full text-left px-4 py-2 text-sm ${level === selectedProduct ? 'bg-gray-100 text-gray-900' : 'text-gray-700 hover:bg-gray-100 hover:text-gray-900'}`}>
                             {level}
                         </button>
                     ))}
@@ -64,4 +64,4 @@ const Levels: React.FC<LevelsProps> = ({ selectedLevel, onLevelChange, selectedF
     );
 };
 
-export default Levels;
+export default DropDownProducts;

@@ -1,14 +1,11 @@
 import * as React from "react";
-// import ProgressRing from "./ProgressRing";
 import '../../../../assets/dist/tailwind.css';
 
 interface CardBodyProps {
     name: string;
-    accessUrl: string;
-    onOpenPopup: () => void; 
 }
 
-const CardBody: React.FC<CardBodyProps> = ({ name, accessUrl, onOpenPopup }) => {
+const CardBody: React.FC<CardBodyProps> = ({ name}) => {
     return (
         <div className="p-4 flex flex-col justify-between h-full relative">
             {/* Main Section: litmos Learning Path Name */}
@@ -28,8 +25,6 @@ const CardBody: React.FC<CardBodyProps> = ({ name, accessUrl, onOpenPopup }) => 
                 <div className="w-[106px] h-[22px] px-2 py-0.5 bg-[#ee0c5d] rounded-xl flex justify-center items-center">
                     <button
                         className="text-white text-xs font-normal"
-                         // onClick={() => window.open(accessUrl, `_blank`)}
-                         onClick={onOpenPopup}
                      >
                         Video
                     </button>

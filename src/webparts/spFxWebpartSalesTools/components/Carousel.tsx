@@ -1,30 +1,16 @@
 import * as React from 'react';
 import Card from './Card';
-
-interface Course {
-    id: string;
-    adsm: string;
-    name: string;
-    role: string;
-    originalid: number;
-    levelName: string;
-    completed: boolean;
-    course: string;
-    cid: string;
-    coriginalid: number;
-    accessUrl: string;
-}
+import { Course } from './ISpFxWebpartSalesToolsProps';
 
 interface CarouselProps {
     courses: Course[];
     selectedFilter: string;
-    selectedLevel: string;
+    selectedProduct: string;
     uniqueRoles: string[];
-    onOpenPopup: () => void;
 }
 
 
-const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLevel, uniqueRoles, onOpenPopup }) => {
+const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedProduct, uniqueRoles }) => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
 
@@ -33,7 +19,7 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
         // if selectedFilter is 'Tool'
         if (selectedFilter === 'Tool') {
             // filter by course tool
-            if (selectedLevel === 'All' || course.course === selectedLevel) {
+            if (selectedProduct === 'All' || course.course === selectedProduct) {
                 return true;
             }
         }
@@ -41,17 +27,17 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
         // if selectedFilter is 'adsm'
         if (selectedFilter === 'ADSM') {
             // filter by course adsm
-            if (selectedLevel === 'All' || course.adsm.includes(selectedLevel)) {
+            if (selectedProduct === 'All' || course.adsm.includes(selectedProduct)) {
                 return true;
             }
         }
         if (selectedFilter === 'Role') {
-            if (selectedLevel === 'All') {
+            if (selectedProduct === 'All') {
                 return true;
             }
 
             // Check if selectedLevel exists in uniqueRoles
-            const roleIndex = uniqueRoles.indexOf(selectedLevel);
+            const roleIndex = uniqueRoles.indexOf(selectedProduct);
             if (roleIndex !== -1 && course.adsm.includes((roleIndex + 1).toString())) {
                 return true;
             }
@@ -99,18 +85,18 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedLe
             setLeft(false);
         }
     }, [currentIndex, filteredCourses]);
-
+    
     return (
         <div className='relative w-full mx-auto overflow-hidden'>
             {/* Carousel */}
             <div
-                className="flex transition-transform duration-500 ease-in-out gap-[25px]"
+                className="flex transition-transform duration-500 ease-in-out laptop:gap-[25px] widescreen:gap-[70px]"
                 style={{ transform: `translateX(-${currentIndex * 25}%)` }}
             >
                 {/* Map through the filtered courses and render each course as a Card */}
                 {filteredCourses.map((course, index) => (
-                    <div key={index} className={`relative w-1/4 flex-shrink-0`}>
-                        <Card data={course} selectedFilter={selectedFilter} selectedLevel={selectedLevel} onOpenPopup={onOpenPopup} />
+                    <div key={index} className={`relative`}>
+                        <Card course={course}/>
                     </div>
                 ))}
             </div>

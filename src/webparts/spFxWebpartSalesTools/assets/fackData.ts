@@ -93,76 +93,76 @@ const fackdata = {
         },
       ],
     },
-    {
-      Name: "Compliance & SmartEvent - Sales | eLearning",
-      Complete: false,
-      isOptional: true,
-      PercentageComplete: 100,
-      LmsCourseUrl:
-        "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/home/course/599846",
-      Description: "",
-      Modules: [
-        {
-          Name: "Compliance & SmartEvent - sales",
-          Score: 0,
-          Completed: false,
-          StartDate: null,
-          LmsModuleUrl:
-            "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/251030/Scorm",
-        },
-        {
-          Name: "Selling Compliance - Sales",
-          Score: 0,
-          Completed: false,
-          StartDate: null,
-          LmsModuleUrl:
-            "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/251032/Scorm",
-        },
-        {
-          Name: "Quantum COMPLIANCE & SMART EVENT - Sales Simulation",
-          Score: 0,
-          Completed: false,
-          StartDate: null,
-          LmsModuleUrl:
-            "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/1493399",
-        },
-      ],
-    },
-    {
-      Name: "Quantum R81.10 & R.81.20 New Capabilities - Sales | eLearning",
-      Complete: false,
-      isOptional: true,
-      PercentageComplete: 100,
-      LmsCourseUrl:
-        "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/home/course/599846",
-      Description: "",
-      Modules: [
-        {
-          Name: "Compliance & SmartEvent - sales",
-          Score: 0,
-          Completed: false,
-          StartDate: null,
-          LmsModuleUrl:
-            "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/251030/Scorm",
-        },
-        {
-          Name: "Selling Compliance - Sales",
-          Score: 0,
-          Completed: false,
-          StartDate: null,
-          LmsModuleUrl:
-            "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/251032/Scorm",
-        },
-        {
-          Name: "Quantum COMPLIANCE & SMART EVENT - Sales Simulation",
-          Score: 0,
-          Completed: false,
-          StartDate: null,
-          LmsModuleUrl:
-            "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/1493399",
-        },
-      ],
-    },
+    // {
+    //   Name: "Compliance & SmartEvent - Sales | eLearning",
+    //   Complete: false,
+    //   isOptional: true,
+    //   PercentageComplete: 100,
+    //   LmsCourseUrl:
+    //     "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/home/course/599846",
+    //   Description: "",
+    //   Modules: [
+    //     {
+    //       Name: "Compliance & SmartEvent - sales",
+    //       Score: 0,
+    //       Completed: false,
+    //       StartDate: null,
+    //       LmsModuleUrl:
+    //         "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/251030/Scorm",
+    //     },
+    //     {
+    //       Name: "Selling Compliance - Sales",
+    //       Score: 0,
+    //       Completed: false,
+    //       StartDate: null,
+    //       LmsModuleUrl:
+    //         "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/251032/Scorm",
+    //     },
+    //     {
+    //       Name: "Quantum COMPLIANCE & SMART EVENT - Sales Simulation",
+    //       Score: 0,
+    //       Completed: false,
+    //       StartDate: null,
+    //       LmsModuleUrl:
+    //         "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/1493399",
+    //     },
+    //   ],
+    // },
+    // {
+    //   Name: "Quantum R81.10 & R.81.20 New Capabilities - Sales | eLearning",
+    //   Complete: false,
+    //   isOptional: true,
+    //   PercentageComplete: 100,
+    //   LmsCourseUrl:
+    //     "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/home/course/599846",
+    //   Description: "",
+    //   Modules: [
+    //     {
+    //       Name: "Compliance & SmartEvent - sales",
+    //       Score: 0,
+    //       Completed: false,
+    //       StartDate: null,
+    //       LmsModuleUrl:
+    //         "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/251030/Scorm",
+    //     },
+    //     {
+    //       Name: "Selling Compliance - Sales",
+    //       Score: 0,
+    //       Completed: false,
+    //       StartDate: null,
+    //       LmsModuleUrl:
+    //         "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/251032/Scorm",
+    //     },
+    //     {
+    //       Name: "Quantum COMPLIANCE & SMART EVENT - Sales Simulation",
+    //       Score: 0,
+    //       Completed: false,
+    //       StartDate: null,
+    //       LmsModuleUrl:
+    //         "https://myapps.microsoft.com/signin/e6816924-4e70-41fd-b0b7-a4fa9755df1f?tenantId=612a5289-89a8-45c2-a40d-f36fadb6d37c&RelayState=https://cptraining.litmoseu.com/course/599846/module/1493399",
+    //     },
+    //   ],
+    // },
   ],
 }
 export default fackdata;

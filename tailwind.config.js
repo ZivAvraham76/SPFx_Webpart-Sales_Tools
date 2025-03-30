@@ -14,10 +14,10 @@ module.exports = {
       tablet: "1024px",
       // => @media (min-width: 1024px) { ... }
 
-      laptop: "1280px",
+      laptop: "1217px",
       // => @media (min-width: 1280px) { ... }
 
-      widescreen: "1920px",
+      widescreen: "1905px",
       // => @media (min-width: 1280px) { ... }
 
       desktop: "2560px",

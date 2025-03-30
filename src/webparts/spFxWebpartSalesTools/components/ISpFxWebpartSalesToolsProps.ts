@@ -1,5 +1,5 @@
 
-interface Course {
+export interface Course {
   id: string;
   adsm: string;
   name: string;
@@ -12,6 +12,7 @@ interface Course {
   coriginalid: number;
   accessUrl: string;
 }
+
 export interface ISpFxWebpartSalesToolsProps {
   trainingData: {
     data : Course[];
