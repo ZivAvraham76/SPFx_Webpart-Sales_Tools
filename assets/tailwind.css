@@ -5,28 +5,28 @@
 @layer base {
   @font-face {
     font-family: "Poppins";
-    src: url("fonts/Poppins-Bold.ttf")format('truetype');
+    src: url("../fonts/Poppins-Bold.ttf")format('truetype');
     font-style: normal;
     font-weight: bold;
   }
 
   @font-face {
     font-family: "Poppins";
-    src: url("fonts/Poppins-Regular.ttf")format('truetype');
+    src: url("../fonts/Poppins-Regular.ttf")format('truetype');
     font-style: normal;
     font-weight: 400;
   }
 
   @font-face {
     font-family: "Poppins";
-    src: url("fonts/Poppins-SemiBold.ttf")format('truetype');
+    src: url("../fonts/Poppins-SemiBold.ttf")format('truetype');
     font-style: normal;
     font-weight: 600;
   }
 
   @font-face {
     font-family: "TitanOne";
-    src: url("fonts/TitanOne-Regular.ttf")format('truetype');
+    src: url("../fonts/TitanOne-Regular.ttf")format('truetype');
     font-style: normal;
     font-weight: 400;
   }

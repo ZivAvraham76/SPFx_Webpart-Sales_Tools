@@ -13,7 +13,6 @@ interface CarouselProps {
 const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedProduct, uniqueRoles }) => {
     const [currentIndex, setCurrentIndex] = React.useState(0);
 
-
     // Filter courses based on selectedFilter and selectedLevel
     const filteredCourses = courses.filter((course) => {
         // if selectedFilter is 'Tool'
@@ -85,18 +84,18 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedPr
             setLeft(false);
         }
     }, [currentIndex, filteredCourses]);
-    
+
     return (
         <div className='relative w-full mx-auto overflow-hidden'>
             {/* Carousel */}
             <div
-                className="flex transition-transform duration-500 ease-in-out laptop:gap-[25px] widescreen:gap-[70px]"
+                className="flex transition-transform duration-500 ease-in-out"
                 style={{ transform: `translateX(-${currentIndex * 25}%)` }}
             >
                 {/* Map through the filtered courses and render each course as a Card */}
                 {filteredCourses.map((course, index) => (
-                    <div key={index} className={`relative`}>
-                        <Card course={course}/>
+                    <div key={index} className="w-1/4 flex-shrink-0">
+                        <Card course={course} />
                     </div>
                 ))}
             </div>
@@ -121,7 +120,7 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedPr
                     </svg></button>
             )}
 
-             {/* Left arrow button */}
+            {/* Left arrow button */}
             {!left && (<button className="border border-[#41273c] absolute top-1/2 left-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handlePrev}>
                 <svg
                     className="h-4 w-4 text-gray-800"
