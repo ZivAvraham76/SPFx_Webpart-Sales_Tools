@@ -13,6 +13,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'SpFxWebpartSalesToolsWebPartStrings';
 import SpFxWebpartSalesTools from "./components/SpFxWebpartSalesTools";
 import { ISpFxWebpartSalesToolsProps } from "./components/ISpFxWebpartSalesToolsProps";
+import { Course } from "./components/ISpFxWebpartSalesToolsProps";
 
 
 export interface ISpFxWebpartSalesToolsWebPartProps {
@@ -26,19 +27,20 @@ export interface ISpFxWebpartSalesToolsWebPartProps {
 }
 
 
-interface Course {
-  id: string;
-  adsm: string;
-  name: string;
-  role: string;
-  originalid: number;
-  levelName: string;
-  completed: boolean;
-  course: string;
-  cid: string;
-  coriginalid: number;
-  accessUrl: string;
-}
+// interface Course {
+//   id: string;
+//   adsm: string;
+//   name: string;
+//   role: string;
+//   originalid: number;
+//   levelName: string;
+//   completed: boolean;
+//   course: string;
+//   cid: string;
+//   coriginalid: number;
+//   accessUrl: string;
+//   CourseImageURL: string;
+// }
 
 type PropertyPaneFieldValue = string | boolean | number | undefined;
 export default class ISpFxWebpartSalesToolsWebPart extends BaseClientSideWebPart<ISpFxWebpartSalesToolsWebPartProps> {
@@ -286,7 +288,7 @@ protected get dataVersion(): Version {
                   description: "Type the ADSM name and press enter",
                   onGetErrorMessage: (value) => {
                     if (this.properties.uniqueAdsm.indexOf(value) !== -1) {
-                      return "Pilar already exists!";
+                      return "Adsm already exists!";
                     }
                     return "";
                   }
@@ -298,7 +300,7 @@ protected get dataVersion(): Version {
                   description: "Type the Role name and press enter",
                   onGetErrorMessage: (value) => {
                     if (this.properties.uniqueRoles.indexOf(value) !== -1) {
-                      return "Pilar already exists!";
+                      return "Role already exists!";
                     }
                     return "";
                   }

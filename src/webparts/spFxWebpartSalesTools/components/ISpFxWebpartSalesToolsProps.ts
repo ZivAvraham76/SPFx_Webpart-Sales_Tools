@@ -11,6 +11,8 @@ export interface Course {
   cid: string;
   coriginalid: number;
   accessUrl: string;
+  CourseImageURL: string;
+  StartDate: string;
 }
 
 export interface ISpFxWebpartSalesToolsProps {

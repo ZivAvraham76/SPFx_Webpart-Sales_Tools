@@ -13,11 +13,30 @@ const DropDownProducts: React.FC<LevelsProps> = ({ selectedProduct, onProductCha
 
     // Dropdown state
     const [isOpen, setIsOpen] = React.useState(false);
+    const dropdownRef = React.useRef<HTMLDivElement>(null);
     const toggleDropdown = (): void => setIsOpen(!isOpen);
     const handleLevelClick = (level: string): void => {
         onProductChange(level);
         setIsOpen(false);
     };
+
+
+// Close dropdown when clicking outside
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
     // Get the display options based on the selected filter
     const displayOptions =
@@ -40,7 +59,7 @@ const DropDownProducts: React.FC<LevelsProps> = ({ selectedProduct, onProductCha
       };
 
     return (
-        <div className="relative inline-block text-left h-full">
+        <div ref={dropdownRef} className="relative inline-block text-left h-full">
             <button onClick={toggleDropdown} className="w-[170px] h-8 px-2 py-1 pr-8 rounded-full text-[#41273c] text-lg border-2 border-[#41273c] flex items-center justify-between">
                 <span className="text-[#41273c] text-xs font-medium font-Poppins">
                     {getButtonLabel()}

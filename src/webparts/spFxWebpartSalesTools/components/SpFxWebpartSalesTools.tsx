@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => {
   const { trainingData, description, uniqueAdsm, uniqueRoles } = props;
+  console.log('trainingData', trainingData);
   const [selectedFilter, setSelectedFilter] = useState('Tool');
   const [selectedProduct, setSelectedProduct] = useState('All');
 
