@@ -18,30 +18,35 @@ const Filters: React.FC<PillarsProps> = ({ selectedFilter, onFilterChange, onPro
     };
 
     return (
-   <div className="flex items-center gap-2 font-Poppins">
-  <div className="text-[#41273c] text-lg font-semibold">Search By</div>
-  <div className="flex h-8 text-xs font-Poppins">
-    {filters.map((filter, index) => {
-      const isFirst = index === 0;
-      const isLast = index === filters.length - 1;
-      
-      return (
-        <button
-          key={filter}
-          className={`px-4 py-1 font-medium transition-colors duration-200 border-2 border-[#41273c]
-            ${isFirst ? 'rounded-l-full' : ''}
-            ${isLast ? 'rounded-r-full' : ''}
-            ${selectedFilter === filter
-              ? 'bg-[#41273c] text-white z-10'
-              : 'bg-white text-[#41273c] hover:bg-[#896f85] hover:text-white -ml-px'}`}
-          onClick={() => handleFilterChange(filter)}
-        >
-          {filter}
-        </button>
-      );
-    })}
-  </div>
-</div>
+      <div className="flex items-center gap-2 font-Poppins">
+      <div className="text-[#41273c] text-lg font-semibold">Search By</div>
+      <div className="flex h-8 text-xs font-Poppins">
+        {filters.map((filter, index) => {
+          const isFirst = index === 0;
+          const isLast = index === filters.length - 1;
+    
+          return (
+            <button
+              key={filter}
+              className={`
+                px-4 py-1 font-medium transition-colors duration-200
+                ${isFirst ? 'rounded-l-full border-l-2' : ''}
+                ${isLast ? 'rounded-r-full border-r-2' : ''}
+                ${!isLast ? 'border-r-2 border-[#41273c]' : ''}
+                border-t-2 border-b-2 border-[#41273c]
+                ${selectedFilter === filter
+                  ? 'bg-[#41273c] text-white z-10'
+                  : 'bg-white text-[#41273c] hover:bg-[#896f85] hover:text-white'}
+              `}
+              onClick={() => handleFilterChange(filter)}
+            >
+              {filter}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+    
 
     );
 };

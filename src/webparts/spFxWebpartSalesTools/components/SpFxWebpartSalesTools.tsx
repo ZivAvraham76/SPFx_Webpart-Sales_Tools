@@ -14,8 +14,16 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
   const [selectedProduct, setSelectedProduct] = useState('All');
 
   // Get unique courses from the training data
-  const uniqueCourses = Array.from(new Set(trainingData.data.map(item => item.course)));
-
+  const uniqueCourses = trainingData.data.modules.reduce((acc: any[], item: { course: string; coursePercentageComplete?: number }) => {
+    const exists = acc.find((i) => i.course === item.course);
+    if (!exists) {
+      acc.push({
+        course: item.course,
+        coursePercentageComplete: item.coursePercentageComplete ?? 0 
+      });
+    }
+    return acc;
+  }, []);
   // Function to reset the selected product to all 
   const onProductReset = (): void => {
     setSelectedProduct('All');
@@ -36,7 +44,7 @@ const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => 
       {/* Carousel displaying the courses */}
       <div id="carousel" className="flex gap-4 overflow-x-auto scrollbar-hide scroll-smooth"
         style={{ scrollSnapType: 'x mandatory', width: '100%', display: 'flex', flexWrap: 'nowrap' }}>
-      <Carousel courses={trainingData.data} selectedProduct={selectedProduct} selectedFilter={selectedFilter} uniqueRoles={uniqueRoles} />
+      <Carousel courses={trainingData.data.modules} selectedProduct={selectedProduct} selectedFilter={selectedFilter} uniqueRoles={uniqueRoles} />
       </div>
     </div>
 

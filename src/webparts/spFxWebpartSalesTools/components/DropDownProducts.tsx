@@ -4,7 +4,7 @@ interface LevelsProps {
     selectedProduct: string;
     onProductChange: (level: string) => void;
     selectedFilter: string;
-    uniqueCourses: string[];
+    uniqueCourses: any[];
     uniqueAdsm: string[];
     uniqueRoles: string[];
 }

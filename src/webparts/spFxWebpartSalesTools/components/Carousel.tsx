@@ -102,7 +102,7 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedPr
 
             {/* Right arrow button */}
             {!right && (
-                <button className="border border-[#41273c] absolute top-1/2 right-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handleNext}>
+                <button className="border border-[#41273c] absolute top-1/2 right-0 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handleNext}>
                     <svg
                         className="h-4 w-4 text-gray-800"
                         aria-hidden="true"
@@ -121,7 +121,7 @@ const Carousel: React.FC<CarouselProps> = ({ courses, selectedFilter, selectedPr
             )}
 
             {/* Left arrow button */}
-            {!left && (<button className="border border-[#41273c] absolute top-1/2 left-2 transform -translate-y-1/2 bg-white rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handlePrev}>
+            {!left && (<button className="absolute top-1/2 left-[-16px] -translate-y-1/2 bg-white border border-[#41273c] rounded-full shadow-lg p-3 hover:bg-gray-100" onClick={handlePrev}>
                 <svg
                     className="h-4 w-4 text-gray-800"
                     aria-hidden="true"

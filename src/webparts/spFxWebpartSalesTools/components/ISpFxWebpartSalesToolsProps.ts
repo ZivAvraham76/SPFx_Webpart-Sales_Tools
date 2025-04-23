@@ -16,9 +16,7 @@ export interface Course {
 }
 
 export interface ISpFxWebpartSalesToolsProps {
-  trainingData: {
-    data : Course[];
-  };
+  trainingData: any;
   description: string;
   uniqueAdsm: string[];
   uniqueRoles: string[];

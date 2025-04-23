@@ -46,7 +46,7 @@ type PropertyPaneFieldValue = string | boolean | number | undefined;
 export default class ISpFxWebpartSalesToolsWebPart extends BaseClientSideWebPart<ISpFxWebpartSalesToolsWebPartProps> {
 
   private Client: AadHttpClient;
-  private trainingData: {data : Course[]};
+  private trainingData: any;
   private newAdsm: string = '';
   private newRole: string = '';
 
