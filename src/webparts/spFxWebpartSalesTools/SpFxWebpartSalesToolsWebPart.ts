@@ -73,7 +73,9 @@ Loading...
 </button>
 </div>`; // Optional: show a loading message
 
-      this.Client.get(
+console.time("📡 Fetching from:");
+
+this.Client.get(
         // "https://training-tools-portal-stg.checkpoint.com/sp-data/4sp/Sales tools and processes | Video",
 
         `${this.properties.backend_url}`,
@@ -87,6 +89,8 @@ Loading...
         })
         .then((data: {data : Course[]}): void => {
           this.trainingData = data;
+          console.timeEnd("📡 Fetching from:"); 
+
           this.render();
         })
         .catch((error) => {
@@ -96,7 +100,7 @@ Loading...
       return;
     }
 
-    console.log(this.trainingData);
+    // console.log(this.trainingData);
 
     const element: React.ReactElement< ISpFxWebpartSalesToolsProps>
      = React.createElement(
@@ -159,11 +163,11 @@ Loading...
     
     if (propertyPath.startsWith('adsm_')) {
       const index = parseInt(propertyPath.split('_')[1], 10);
-      console.log(this.properties.checkboxAdsm)
+      // console.log(this.properties.checkboxAdsm)
       if (newValue===false) {
         this.properties.uniqueAdsm = this.properties.uniqueAdsm.filter(p => p !== this.properties.checkboxAdsm[index]);
-        console.log(this.properties.uniqueAdsm)
-        console.log("new",newValue);
+        // console.log(this.properties.uniqueAdsm)
+        // console.log("new",newValue);
         this.context.propertyPane.refresh();
         this.render();
 
@@ -178,10 +182,10 @@ Loading...
 
     if (propertyPath.startsWith('role_')) {
       const index = parseInt(propertyPath.split('_')[1], 10);
-      console.log(this.properties.checkboxRoles)
+      // console.log(this.properties.checkboxRoles)
       if (newValue===false) {
         this.properties.uniqueRoles = this.properties.uniqueRoles.filter(p => p !== this.properties.checkboxRoles[index]);
-        console.log(this.properties.uniqueRoles)
+        // console.log(this.properties.uniqueRoles)
         this.context.propertyPane.refresh();
         this.render();
 

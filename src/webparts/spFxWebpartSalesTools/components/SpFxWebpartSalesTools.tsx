@@ -9,21 +9,13 @@ import { useState } from 'react';
 
 const SpFxWebpartSalesTools: React.FC<ISpFxWebpartSalesToolsProps> = (props) => {
   const { trainingData, description, uniqueAdsm, uniqueRoles } = props;
-  console.log('trainingData', trainingData);
+  // console.log('trainingData', trainingData);
   const [selectedFilter, setSelectedFilter] = useState('Tool');
   const [selectedProduct, setSelectedProduct] = useState('All');
 
   // Get unique courses from the training data
-  const uniqueCourses = trainingData.data.modules.reduce((acc: any[], item: { course: string; coursePercentageComplete?: number }) => {
-    const exists = acc.find((i) => i.course === item.course);
-    if (!exists) {
-      acc.push({
-        course: item.course,
-        coursePercentageComplete: item.coursePercentageComplete ?? 0 
-      });
-    }
-    return acc;
-  }, []);
+  const uniqueCourses = Array.from(new Set(trainingData.data.modules.map((item: { course: string }) => item.course)));
+
   // Function to reset the selected product to all 
   const onProductReset = (): void => {
     setSelectedProduct('All');
