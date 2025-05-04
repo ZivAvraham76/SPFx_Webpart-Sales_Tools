@@ -13,7 +13,7 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'SpFxWebpartSalesToolsWebPartStrings';
 import SpFxWebpartSalesTools from "./components/SpFxWebpartSalesTools";
 import { ISpFxWebpartSalesToolsProps } from "./components/ISpFxWebpartSalesToolsProps";
-import { Course } from "./components/ISpFxWebpartSalesToolsProps";
+// import { Course } from "./components/ISpFxWebpartSalesToolsProps";
 
 
 export interface ISpFxWebpartSalesToolsWebPartProps {
@@ -73,23 +73,49 @@ Loading...
 </button>
 </div>`; // Optional: show a loading message
 
-console.time("📡 Fetching from:");
 
-this.Client.get(
-        // "https://training-tools-portal-stg.checkpoint.com/sp-data/4sp/Sales tools and processes | Video",
 
-        `${this.properties.backend_url}`,
+      // Check if we have a stored userId
+      let storedUserId = null;
+      try {
+        storedUserId = localStorage.getItem('lmsUserId');
+      } catch (error) {
+        console.warn("Error accessing localStorage:", error);
+      }
+
+      // Construct the URL with the cached userId if available
+      const url = storedUserId 
+        ? `${this.properties.backend_url}?cachedUserId=${storedUserId}` 
+        : `${this.properties.backend_url}`;
+
+        console.log("storedUserId", storedUserId);
+        console.log("url", url);
+
+      this.Client.get(
+        url,
         AadHttpClient.configurations.v1
       )
-        .then((response: HttpClientResponse): Promise<{data : Course[]}> => {
+        .then((response: HttpClientResponse): Promise<{data:{lmsUserId: string}}> => {
           if (!response.ok) {
             throw new Error(`API error: ${response.statusText}`);
           }
           return response.json();
         })
-        .then((data: {data : Course[]}): void => {
-          this.trainingData = data;
-          console.timeEnd("📡 Fetching from:"); 
+        .then((response:{data: {lmsUserId: string}}): void => {
+          this.trainingData = response.data;
+
+          console.log("API response:", response.data);
+          console.log("User ID:", response.data.lmsUserId);
+          
+
+          // Store the userId in localStorage if it exists in the response
+          if (response.data.lmsUserId) {
+            try {
+              localStorage.setItem('lmsUserId', response.data.lmsUserId);
+            } catch (error) {
+              console.warn("Error storing userId in localStorage:", error);
+            }
+          }
 
           this.render();
         })
